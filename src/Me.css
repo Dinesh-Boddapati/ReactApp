@@ -1,0 +1,114 @@
+/* --- Global Styles --- */
+body {
+  background-color: #1a1a1a; /* Dark background */
+  color: #e6e6e6;             /* Light grey text */
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Main Layout Container --- */
+.hero-section {
+  display: flex; /* This is the key! It puts the text and image side-by-side. */
+  align-items: center; /* Vertically aligns items to the middle */
+  justify-content: center; /* Horizontally centers the whole component */
+  padding: 4rem 2rem;
+  min-height: 90vh; /* Makes the section tall */
+  gap: 2rem; /* Adds space between the text and the image */
+  max-width: 1100px;
+  margin: 0 auto; /* Centers the section on the page */
+}
+
+/* --- Text Styling (Left Column) --- */
+.hero-text {
+  flex: 1; /* Allows the text block to grow */
+  max-width: 1000px;
+  text-align:left;
+}
+
+.hero-text .greeting {
+  font-size: 1.5rem;
+  color: #e6e6e6;
+  font-weight: 500;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  margin: 0.5rem 0;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero-text .job-title {
+  font-size: 1.5rem;
+  color: #00aaff; /* A nice highlight color */
+  font-weight: 500;
+  position: relative;
+  padding-left: 60px; /* Space for the decorative line */
+}
+
+/* Creates that little line next to "Software Developer" */
+.hero-text .job-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 2px;
+  background-color: #00aaff;
+}
+
+/* --- Image Styling (Right Column) --- */
+
+/* The glowing circular container */
+.hero-image-container {
+  flex-shrink: 0; /* Prevents the image container from shrinking */
+  position: relative;
+  width: 350px;  
+  height: 350px; 
+  border-radius: 50%; 
+
+  /* THE GLOW EFFECT using a radial gradient */
+  background: radial-gradient(circle, rgba(255, 69, 0, 0.6) 20%, rgba(26, 26, 26, 0) 65%);
+}
+
+/* The actual profile image */
+.profile-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+
+  width: 90%;  
+  height: 90%;
+  
+  border-radius: 50%; 
+  object-fit: cover;  
+}
+
+/* --- Responsive Design for Smaller Screens --- */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column; 
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center; /* Centers the text on mobile */
+  }
+
+  .hero-text .job-title {
+    padding-left: 0; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-text .job-title::before {
+    position: static; 
+    transform: none;
+    margin-right: 10px;
+  }
+}
